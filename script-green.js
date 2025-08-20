@@ -82,4 +82,33 @@ document.addEventListener('DOMContentLoaded', () => {
   runSequence(bootSequence, boot, 300, () => {
     scrambleText(prompt, '> ENTER AUTHORIZATION PASSWORD:');
   });
+
+  // ---- GLOW TOGGLE & COLOR SWITCHING ----
+  const terminalElements = [boot, prompt, msg, passwordInput];
+  let glowEnabled = true;
+  let colorIndex = 1;
+  const colors = ['#808080', '#00FF00', '#66FF66']; // gray, pure green, soft green
+
+  function updateColors() {
+    terminalElements.forEach(el => {
+      el.style.color = colors[colorIndex];
+      el.style.textShadow = glowEnabled
+        ? `0 0 2px ${colors[colorIndex]}, 0 0 12px ${colors[colorIndex]}`
+        : 'none';
+    });
+    passwordInput.style.caretColor = colors[colorIndex];
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'g' || e.key === 'G') {
+      glowEnabled = !glowEnabled;
+      updateColors();
+    } else if (['1','2','3'].includes(e.key)) {
+      colorIndex = parseInt(e.key) - 1;
+      updateColors();
+    }
+  });
+
+  // initial color setup
+  updateColors();
 });
