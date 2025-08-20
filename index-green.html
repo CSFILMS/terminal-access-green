@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Terminal Access</title>
+  <link rel="stylesheet" href="styles-green.css" />
+  <style>
+    body {
+      background: black;
+      color: #00FF00;
+      font-family: monospace;
+      padding: 20px;
+      font-size: 1.2em;
+    }
+    #terminal { max-width: 700px; margin: auto; }
+    input {
+      background: black;
+      border: none;
+      color: #00FF00;
+      font-family: monospace;
+      font-size: 1.2em;
+      outline: none;
+      width: 100%;
+    }
+    #boot, #prompt, #msg {
+      font-size: 1.2em;
+      text-shadow: 0 0 2px #00FF00, 0 0 12px #00FF00;
+    }
+    #video { display: none; margin-top: 60px; width: 100%; max-width: 700px; }
+    .line { margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <div id="terminal">
+    <div class="line" id="boot"></div>
+    <div class="line" id="prompt"></div>
+    <input type="password" id="password" autofocus />
+    <div class="line" id="msg"></div>
+    <video id="video" controls>
+      <source src="video-green.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <script src="script-green.js"></script>
+</body>
+</html>
